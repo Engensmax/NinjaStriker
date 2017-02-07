@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Player>
+  <image>
+    <Path>Ninja2</Path>
+    <Effects>SpriteSheetEffect</Effects>
+    <SpriteSheetEffect>
+      <item>7</item>
+      <item>7</item>
+      <item>7</item>
+      <item>7</item>
+      <item>8</item>
+      <item>8</item>
+      <item>8</item>
+      <item>8</item>
+      <item>9</item>
+      <item>9</item>
+      <item>9</item>
+      <item>9</item>
+      <item>6</item>
+      <item>6</item>
+      <item>6</item>
+      <item>6</item>
+      <item>13</item>
+      <item>13</item>
+      <item>13</item>
+      <item>13</item>
+      <item>6</item>
+    </SpriteSheetEffect>
+  </image>
+  <MoveSpeed>100</MoveSpeed>
+</Player>

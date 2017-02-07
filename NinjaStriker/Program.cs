@@ -14,7 +14,7 @@ namespace NinjaStriker
         [STAThread]
         static void Main()
         {
-            using (var game = new NinjaStriker())
+            using (var game = NinjaStriker.Instance)
                 game.Run();
         }
     }
