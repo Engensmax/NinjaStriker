@@ -60,7 +60,7 @@
     <Compile Include="Managers\MenuManager.cs" />
     <Compile Include="NinjaStriker.cs" />
     <Compile Include="Components\ScreenPosition.cs" />
-    <Compile Include="Templates\Player.cs" />
+    <Compile Include="Template\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Managers\ScreenManager.cs" />
@@ -68,7 +68,7 @@
     <Compile Include="Screens\TitleScreen.cs" />
     <Compile Include="Components\Velocity.cs" />
     <Compile Include="Managers\XmlManager.cs" />
-    <Compile Include="Templates\ShurikenTemplate.cs" />
+    <Compile Include="Template\ShurikenTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

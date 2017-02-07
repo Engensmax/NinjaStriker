@@ -7,7 +7,7 @@ using Artemis;
 using Microsoft.Xna.Framework;
 
 
-namespace NinjaStriker
+namespace NinjaStriker.Components
 {
     //Add this Attribute and extend ComponentPoolable if you want your Component to use Artemis Component Pool
     ///[Artemis.Attributes.ArtemisComponentPool(InitialSize = 5, IsResizable = true, ResizeSize = 20, IsSupportMultiThread = false)]

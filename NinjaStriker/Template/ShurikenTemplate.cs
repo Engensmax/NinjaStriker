@@ -4,11 +4,11 @@ using Artemis.Interface;
 
 using NinjaStriker.Components;
 
-namespace NinjaStriker.Templates
+namespace NinjaStriker.Template
 {
 
     /// <summary>The shuriken template.</summary>
-    [ArtemisEntityTemplate("ShurikenTemplate")]
+    [ArtemisEntityTemplate(Name)]
     public class ShurikenTemplate : IEntityTemplate
     {
         /// <summary>The name.</summary>

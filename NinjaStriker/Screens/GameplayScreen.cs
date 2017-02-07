@@ -7,10 +7,16 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+
 using Artemis;
+using Artemis.Attributes;
+using Artemis.Interface;
+using Artemis.Manager;
 using Artemis.System;
+using Artemis.Utils;
+
 using NinjaStriker.Components;
-using NinjaStriker.Templates;
+using NinjaStriker.Template;
 
 namespace NinjaStriker
 {
