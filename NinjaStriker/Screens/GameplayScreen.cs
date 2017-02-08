@@ -25,11 +25,18 @@ namespace NinjaStriker
     {
         private EntityWorld world;
 
-        // private TimeSpan elapsedTime;
+        private void CreatePlayer(int playerNumber, string xmlPath)
+        {
+            var entity = this.world.CreateEntityFromTemplate(PlayerTemplate.Name);
+            entity.GetComponent<PlayerNumber>().playerNumber = playerNumber;
 
-
-        Player player;
-
+            XmlManager<Image> imageLoader = new XmlManager<Image>();
+            Image image = imageLoader.Load(xmlPath);
+            entity.AddComponent(image);
+            entity.GetComponent<Image>().LoadContent();
+            entity.GetComponent<Input>().Initialize(playerNumber);
+            entity.Refresh();
+        }
 
         public GameplayScreen()
         {
@@ -42,21 +49,18 @@ namespace NinjaStriker
             //System.Diagnostics.Debug.WriteLine(shuriken.GetComponent<Damage>().damage);
             //shuriken.AddComponentFromPool<Velocity>();
 
-            var entity1 = world.CreateEntityFromTemplate(PlayerTemplate.Name);
+            CreatePlayer(1, "Load/ninja2.xml");
+            CreatePlayer(2, "Load/ninja3.xml");
         }
 
         public override void LoadContent()
         {
             base.LoadContent();
-            //XmlManager<Player> playerLoader = new XmlManager<Player>();
-            //player = playerLoader.Load("Load/Player.xml");
-            //player.LoadContent();
         }
 
         public override void UnloadContent()
         {
             base.UnloadContent();
-            //player.UnloadContent();
         }
 
         public override void Update(GameTime gameTime)
@@ -64,7 +68,6 @@ namespace NinjaStriker
             base.Update(gameTime);
             EntitySystem.BlackBoard.SetEntry<GameTime>("GameTime", gameTime);
             world.Update();
-            //player.Update(gameTime);
             if (InputManager.Instance.KeyPressed(Keys.Escape))
                 NinjaStriker.Instance.Exit();
         }
@@ -74,7 +77,6 @@ namespace NinjaStriker
 
             base.Draw();
             world.Draw();
-            ///player.Draw();
         }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 namespace NinjaStriker.Templates
 {
 
-    /// <summary>The shuriken template.</summary>
+    /// <summary>The player template.</summary>
     [ArtemisEntityTemplate(Name)]
     public class PlayerTemplate : IEntityTemplate
     {
@@ -27,11 +27,6 @@ namespace NinjaStriker.Templates
             entity.AddComponentFromPool<PlatformPosition>();
             entity.AddComponentFromPool<PlayerNumber>();
             entity.AddComponentFromPool<Input>();
-
-            XmlManager<Image> imageLoader = new XmlManager<Image>();
-            Image image = imageLoader.Load("Load/ninja2.xml");
-            entity.AddComponent<Image>(image);
-            entity.GetComponent<Image>().LoadContent();
 
             entity.Refresh();
             

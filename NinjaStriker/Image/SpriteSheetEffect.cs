@@ -11,6 +11,7 @@ namespace NinjaStriker
 {
     public class SpriteSheetEffect : ImageEffect
     {
+        public bool isContinuous;
         [XmlIgnore]
         public int FrameCounter;
         [XmlIgnore]
@@ -58,6 +59,7 @@ namespace NinjaStriker
             base.Update(gameTime);
             if (image.IsActive)
             {
+                image.isDrawn = true;
                 FrameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
                 if (FrameCounter >= SwitchFrame)
                 {
@@ -66,12 +68,19 @@ namespace NinjaStriker
                     if (CurrentFrame.Y >= AmountOfFramesPerLine.Count)
                         CurrentFrame.Y = 0;
                     if (CurrentFrame.X >= AmountOfFramesPerLine[(int)CurrentFrame.Y])
-                        CurrentFrame.X = 0;
+                    {
+                        if (isContinuous)
+                            CurrentFrame.X = 0;
+                        else
+                            image.IsActive = false;
+                    }
                 }
             }
             else
+            {
+                image.isDrawn = false;
                 CurrentFrame.X = 0;
-
+            }
             image.SourceRect = new Rectangle((int)CurrentFrame.X * FrameWidth,
                 (int)CurrentFrame.Y * FrameHeight, FrameWidth, FrameHeight);
         }

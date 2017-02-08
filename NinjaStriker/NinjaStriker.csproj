@@ -92,6 +92,9 @@
     <Content Include="Load\Menus\TitleMenu.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Load\ninja3.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Load\Player.xml">
       <SubType>Designer</SubType>
     </Content>

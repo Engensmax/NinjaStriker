@@ -36,6 +36,7 @@ namespace NinjaStriker
         [XmlIgnore]
         public Dictionary<string, ImageEffect> effectList;
         public string Effects;
+        public bool isDrawn;
 
         public FadeEffect FadeEffect;
         public SpriteSheetEffect SpriteSheetEffect;
@@ -106,6 +107,7 @@ namespace NinjaStriker
             Alpha = 1.0f;
             SourceRect = Rectangle.Empty;
             effectList = new Dictionary<string, ImageEffect>();
+            isDrawn = true;
         }
 
         public void LoadContent()
@@ -180,11 +182,15 @@ namespace NinjaStriker
 
         public void Draw()
         {
-            var spriteBatch = EntitySystem.BlackBoard.GetEntry<SpriteBatch>("SpriteBatch");
-            origin = new Vector2(SourceRect.Width / 2,
-                SourceRect.Height / 2);
-            spriteBatch.Draw(Texture, Position + origin, SourceRect, Color.White * Alpha,
-                0.0f, origin, Scale, SpriteEffects.None, 0.0f);
+            if (isDrawn)
+            {
+                var spriteBatch = EntitySystem.BlackBoard.GetEntry<SpriteBatch>("SpriteBatch");
+                origin = new Vector2(SourceRect.Width / 2,
+                    SourceRect.Height / 2);
+                spriteBatch.Draw(Texture, Position + origin, SourceRect, Color.White * Alpha,
+                    0.0f, origin, Scale, SpriteEffects.None, 0.0f);
+            }
+            else { }
         }
     }
 }

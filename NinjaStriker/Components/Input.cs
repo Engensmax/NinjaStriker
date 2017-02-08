@@ -23,14 +23,29 @@ namespace NinjaStriker.Components
 
         public Dictionary<Action, Keys> actionKeysMap;
 
+        public void Initialize(int playerNumber)
+        {
+            if (playerNumber == 1)
+            {
+                this.actionKeysMap = new Dictionary<Action, Keys>();
+                this.actionKeysMap.Add(Action.MoveCharacterUp, Keys.W);
+                this.actionKeysMap.Add(Action.MoveCharacterLeft, Keys.A);
+                this.actionKeysMap.Add(Action.MoveCharacterDown, Keys.S);
+                this.actionKeysMap.Add(Action.MoveCharacterRight, Keys.D);
+            }
+
+            if (playerNumber == 2)
+            {
+                this.actionKeysMap = new Dictionary<Action, Keys>();
+                this.actionKeysMap.Add(Action.MoveCharacterUp, Keys.Up);
+                this.actionKeysMap.Add(Action.MoveCharacterLeft, Keys.Left);
+                this.actionKeysMap.Add(Action.MoveCharacterDown, Keys.Down);
+                this.actionKeysMap.Add(Action.MoveCharacterRight, Keys.Right);
+            }
+        }
+
         public Input()
         {
-            this.actionKeysMap = new Dictionary<Action, Keys>();
-            this.actionKeysMap.Add(Action.MoveCharacterUp, Keys.W);
-            this.actionKeysMap.Add(Action.MoveCharacterLeft, Keys.A);
-            this.actionKeysMap.Add(Action.MoveCharacterDown, Keys.S);
-            this.actionKeysMap.Add(Action.MoveCharacterRight, Keys.D);
-
         }
     }
 }

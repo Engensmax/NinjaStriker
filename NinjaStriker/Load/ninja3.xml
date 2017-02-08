@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Image>
-  <Path>Ninja2</Path>
+  <Path>Ninja3</Path>
   <IsDrawn>false</IsDrawn>
-  <IsActive>true</IsActive>
+  <IsActive>false</IsActive>
   <Effects>SpriteSheetEffect</Effects>
   <SpriteSheetEffect>
     <item>7</item>
