@@ -7,13 +7,14 @@ using Artemis;
 
 namespace NinjaStriker.Components
 {
+    [Artemis.Attributes.ArtemisComponentPool()]
     class PlayerNumber : ComponentPoolable
     {
         public int playerNumber;
 
-        PlayerNumber(int playerNumber)
+        public PlayerNumber()
         {
-            this.playerNumber = playerNumber;
+            this.playerNumber = 1;
         }
     }
 }

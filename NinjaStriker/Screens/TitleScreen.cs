@@ -34,10 +34,10 @@ namespace NinjaStriker
             menuManager.Update(gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw()
         {
-            base.Draw(spriteBatch);
-            menuManager.Draw(spriteBatch);
+            base.Draw();
+            menuManager.Draw();
         }
     }
 }

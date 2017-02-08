@@ -8,13 +8,14 @@ using Artemis;
 
 namespace NinjaStriker.Components
 {
+    [Artemis.Attributes.ArtemisComponentPool()]
     class ScreenPosition : ComponentPoolable
     {
         public Vector2 position;
 
-        public ScreenPosition(Vector2 position)
+        public ScreenPosition()
         {
-            this.position = position;
+            this.position = Vector2.Zero;
         }
             
     }

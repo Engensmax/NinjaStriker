@@ -21,8 +21,6 @@ namespace NinjaStriker
         public T Load(string path)
         {
             T instance;
-            System.Diagnostics.Debug.WriteLine("XmlPath:");
-            System.Diagnostics.Debug.WriteLine(path);
             using (TextReader reader = new StreamReader(path))
             {
                 XmlSerializer xml = new XmlSerializer(Type);

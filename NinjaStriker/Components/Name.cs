@@ -7,11 +7,12 @@ using Artemis;
 
 namespace NinjaStriker.Components
 {
+    [Artemis.Attributes.ArtemisComponentPool()]
     class Name : ComponentPoolable
     {
         public string name;
 
-        Name(string name)
+        public Name(string name)
         {
             this.name = name;
         }

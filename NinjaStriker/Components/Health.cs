@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using Artemis;
 namespace NinjaStriker.Components
 {
+    [Artemis.Attributes.ArtemisComponentPool()]
     class Health : ComponentPoolable
     {
-        public int health;
+        public float health;
 
         public Health()
         {
-            this.health = 3;
+            this.health = 1;
         }
 
         //obligatory for poolable Components

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Diagnostics;
 using Artemis;
+using Artemis.System;
 
 namespace NinjaStriker
 {
@@ -39,8 +40,14 @@ namespace NinjaStriker
             graphics.ApplyChanges();
 
             base.Initialize();
-            /// IsMouseVisible = true;
+            // IsMouseVisible = true;
             System.Diagnostics.Debug.WriteLine("Initialization");
+
+            EntitySystem.BlackBoard.SetEntry("ContentManager", this.Content);
+            EntitySystem.BlackBoard.SetEntry("GraphicsDevice", this.GraphicsDevice);
+            EntitySystem.BlackBoard.SetEntry("SpriteBatch", this.spriteBatch);
+
+            // EntitySystem.BlackBoard.SetEntry("SpriteFont", this.font);
         }
 
         protected override void LoadContent()
@@ -59,6 +66,7 @@ namespace NinjaStriker
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+
             ScreenManager.Instance.Update(gameTime);
             base.Update(gameTime);
         }
@@ -70,7 +78,7 @@ namespace NinjaStriker
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
-            ScreenManager.Instance.Draw(spriteBatch);
+            ScreenManager.Instance.Draw();
             spriteBatch.End();
 
             base.Draw(gameTime);

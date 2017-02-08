@@ -37,10 +37,10 @@ namespace NinjaStriker
             }
         }
                 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw()
         {
-            base.Draw(spriteBatch);
-            image.Draw(spriteBatch);
+            base.Draw();
+            image.Draw();
         }
     }
 }

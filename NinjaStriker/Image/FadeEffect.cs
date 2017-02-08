@@ -29,6 +29,7 @@ namespace NinjaStriker
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
             if (image.IsActive)
             {
                 if (!Increase)

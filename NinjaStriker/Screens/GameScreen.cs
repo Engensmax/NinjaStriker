@@ -40,7 +40,7 @@ namespace NinjaStriker
             InputManager.Instance.Update();
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw()
         {
         }
     }

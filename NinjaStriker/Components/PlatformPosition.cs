@@ -8,13 +8,14 @@ using Artemis;
 
 namespace NinjaStriker.Components
 {
-    class TilePosition : ComponentPoolable
+    [Artemis.Attributes.ArtemisComponentPool()]
+    class PlatformPosition : ComponentPoolable
     {
         public int position;
 
-        public TilePosition(int position)
+        public PlatformPosition()
         {
-            this.position = position;
+            this.position = 0;
         }
             
     }

@@ -10,6 +10,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
+using Artemis.System;
+
 namespace NinjaStriker
 {
     public class ScreenManager
@@ -105,11 +107,13 @@ namespace NinjaStriker
             Transition(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            currentScreen.Draw(spriteBatch);
+            SpriteBatch spriteBatch = 
+                EntitySystem.BlackBoard.GetEntry<SpriteBatch>("SpriteBatch");
+            currentScreen.Draw();
             if(IsTransitioning)
-                image.Draw(spriteBatch);
+                image.Draw();
         }
     }
 

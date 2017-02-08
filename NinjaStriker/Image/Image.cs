@@ -10,10 +10,12 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 using Artemis;
+using Artemis.Interface;
+using Artemis.System;
 
 namespace NinjaStriker
 {
-    public class Image : ComponentPoolable
+    public class Image : IComponent
     {
         public float Alpha;
         public string Text, FontName, Path;
@@ -23,11 +25,16 @@ namespace NinjaStriker
         
         [XmlIgnore]
         public Texture2D Texture;
-        Vector2 origin;
-        ContentManager content;
-        RenderTarget2D renderTarget;
-        SpriteFont font;
-        Dictionary<string, ImageEffect> effectList;
+        [XmlIgnore]
+        public Vector2 origin;
+        [XmlIgnore]
+        public ContentManager content;
+        [XmlIgnore]
+        public RenderTarget2D renderTarget;
+        [XmlIgnore]
+        public SpriteFont font;
+        [XmlIgnore]
+        public Dictionary<string, ImageEffect> effectList;
         public string Effects;
 
         public FadeEffect FadeEffect;
@@ -163,12 +170,17 @@ namespace NinjaStriker
             foreach (var effect in effectList)
             {
                 if (effect.Value.IsActive)
+                {
+                    if (this.Path == "Ninja2")
+                        System.Diagnostics.Debug.WriteLine(effect);
                     effect.Value.Update(gameTime);
+                }
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
+            var spriteBatch = EntitySystem.BlackBoard.GetEntry<SpriteBatch>("SpriteBatch");
             origin = new Vector2(SourceRect.Width / 2,
                 SourceRect.Height / 2);
             spriteBatch.Draw(Texture, Position + origin, SourceRect, Color.White * Alpha,

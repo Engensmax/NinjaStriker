@@ -16,50 +16,65 @@ using Artemis.System;
 using Artemis.Utils;
 
 using NinjaStriker.Components;
-using NinjaStriker.Template;
+using NinjaStriker.Templates;
+using NinjaStriker.Systems;
 
 namespace NinjaStriker
 {
     class GameplayScreen : GameScreen
     {
-        EntityWorld world;
+        private EntityWorld world;
+
+        // private TimeSpan elapsedTime;
+
+
         Player player;
 
-        
+
         public GameplayScreen()
         {
+
             this.world = new EntityWorld();
-            var ninja = world.CreateEntityFromTemplate("ShurikenTemplate");
+
+            this.world.InitializeAll(true);
+
+            //var shuriken = world.CreateEntityFromTemplate(ShurikenTemplate.Name);
+            //System.Diagnostics.Debug.WriteLine(shuriken.GetComponent<Damage>().damage);
+            //shuriken.AddComponentFromPool<Velocity>();
+
+            var entity1 = world.CreateEntityFromTemplate(PlayerTemplate.Name);
         }
 
         public override void LoadContent()
         {
             base.LoadContent();
-            XmlManager<Player> playerLoader = new XmlManager<Player>();
-            player = playerLoader.Load("Load/Player.xml");
-            player.LoadContent();
+            //XmlManager<Player> playerLoader = new XmlManager<Player>();
+            //player = playerLoader.Load("Load/Player.xml");
+            //player.LoadContent();
         }
 
         public override void UnloadContent()
         {
             base.UnloadContent();
-            player.UnloadContent();
+            //player.UnloadContent();
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+            EntitySystem.BlackBoard.SetEntry<GameTime>("GameTime", gameTime);
             world.Update();
-            player.Update(gameTime);
+            //player.Update(gameTime);
             if (InputManager.Instance.KeyPressed(Keys.Escape))
                 NinjaStriker.Instance.Exit();
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw()
         {
-            base.Draw(spriteBatch);
+
+            base.Draw();
             world.Draw();
-            player.Draw(spriteBatch);
+            ///player.Draw();
         }
     }
 }

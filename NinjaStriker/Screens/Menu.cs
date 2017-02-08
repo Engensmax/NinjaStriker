@@ -140,10 +140,10 @@ namespace NinjaStriker
                 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
             foreach (MenuItem item in Items)
-                item.image.Draw(spriteBatch);
+                item.image.Draw();
 
         }
     }

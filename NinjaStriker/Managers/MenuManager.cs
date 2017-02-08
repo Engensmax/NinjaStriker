@@ -88,9 +88,9 @@ namespace NinjaStriker
             }
             Transition(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            menu.Draw(spriteBatch);
+            menu.Draw();
         }
     }
 }

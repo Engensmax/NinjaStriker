@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Artemis;
+using Artemis.System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -33,7 +34,6 @@ namespace NinjaStriker
         public void Update(GameTime gameTime)
         {
             image.IsActive = true;
-
             if (InputManager.Instance.KeyPressed(Keys.Tab))
                 image.SpriteSheetEffect.CurrentFrame.Y++;
 
@@ -77,9 +77,9 @@ namespace NinjaStriker
             image.Update(gameTime);
             image.Position += Velocity;
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            image.Draw(spriteBatch);
+            image.Draw();
         }
     }
 }
