@@ -49,7 +49,7 @@ namespace NinjaStriker
         public void ChangeScreens(string screenName)
         {
             newScreen = (GameScreen)Activator.CreateInstance(Type.GetType("NinjaStriker." + screenName));
-            image.IsActive = true;
+            image.isActive = true;
             image.FadeEffect.Increase = true;
             image.Alpha = 0.1f;
             IsTransitioning = true;
@@ -70,7 +70,7 @@ namespace NinjaStriker
                 }
                 else if (image.Alpha == 0.0f)
                 {
-                    image.IsActive = false;
+                    image.isActive = false;
                     IsTransitioning = false;
                 }
             }

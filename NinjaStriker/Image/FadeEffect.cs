@@ -30,7 +30,7 @@ namespace NinjaStriker
         {
             base.Update(gameTime);
 
-            if (image.IsActive)
+            if (image.isActive)
             {
                 if (!Increase)
                     image.Alpha -= FadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;

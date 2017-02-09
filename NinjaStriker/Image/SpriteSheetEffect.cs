@@ -57,9 +57,9 @@ namespace NinjaStriker
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            if (image.IsActive)
+            if (image.isActive)
             {
-                image.isDrawn = true;
+                image.isVisible = true;
                 FrameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
                 if (FrameCounter >= SwitchFrame)
                 {
@@ -72,13 +72,13 @@ namespace NinjaStriker
                         if (isContinuous)
                             CurrentFrame.X = 0;
                         else
-                            image.IsActive = false;
+                            image.isActive = false;
                     }
                 }
             }
             else
             {
-                image.isDrawn = false;
+                image.isVisible = false;
                 CurrentFrame.X = 0;
             }
             image.SourceRect = new Rectangle((int)CurrentFrame.X * FrameWidth,

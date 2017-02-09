@@ -21,7 +21,7 @@ namespace NinjaStriker
         public string Text, FontName, Path;
         public Vector2 Position, Scale;
         public Rectangle SourceRect;
-        public bool IsActive;
+        public bool isActive;
         
         [XmlIgnore]
         public Texture2D Texture;
@@ -36,10 +36,11 @@ namespace NinjaStriker
         [XmlIgnore]
         public Dictionary<string, ImageEffect> effectList;
         public string Effects;
-        public bool isDrawn;
+        public bool isVisible;
 
         public FadeEffect FadeEffect;
         public SpriteSheetEffect SpriteSheetEffect;
+        public BlinkEffect BlinkEffect;
 
         void SetEffect<T>(ref T effect)
         {
@@ -47,7 +48,7 @@ namespace NinjaStriker
                 effect = (T)Activator.CreateInstance(typeof(T));
             else
             {
-                (effect as ImageEffect).IsActive = true;
+                (effect as ImageEffect).isActive = true;
                 var obj = this;
                 (effect as ImageEffect).LoadContent(ref obj);
             }
@@ -59,7 +60,7 @@ namespace NinjaStriker
         {
             if (effectList.ContainsKey(effect))
             {
-                effectList[effect].IsActive = true;
+                effectList[effect].isActive = true;
                 var obj = this;
                 effectList[effect].LoadContent(ref obj);
             }
@@ -69,7 +70,7 @@ namespace NinjaStriker
         {
             if (effectList.ContainsKey(effect))
             {
-                effectList[effect].IsActive = false;
+                effectList[effect].isActive = false;
                 effectList[effect].UnloadContent();
             }
         }
@@ -79,7 +80,7 @@ namespace NinjaStriker
             Effects = String.Empty;
             foreach(var effect in effectList)
             {
-                if(effect.Value.IsActive)
+                if(effect.Value.isActive)
                     Effects += effect.Key + ":";
             }
             if (Effects != String.Empty)
@@ -107,7 +108,7 @@ namespace NinjaStriker
             Alpha = 1.0f;
             SourceRect = Rectangle.Empty;
             effectList = new Dictionary<string, ImageEffect>();
-            isDrawn = true;
+            isVisible = true;
         }
 
         public void LoadContent()
@@ -151,6 +152,7 @@ namespace NinjaStriker
 
             SetEffect<FadeEffect>(ref FadeEffect);
             SetEffect<SpriteSheetEffect>(ref SpriteSheetEffect);
+            SetEffect<BlinkEffect>(ref BlinkEffect);
 
             if (Effects != String.Empty)
             {
@@ -171,10 +173,8 @@ namespace NinjaStriker
         {
             foreach (var effect in effectList)
             {
-                if (effect.Value.IsActive)
+                if (effect.Value.isActive)
                 {
-                    if (this.Path == "Ninja2")
-                        System.Diagnostics.Debug.WriteLine(effect);
                     effect.Value.Update(gameTime);
                 }
             }
@@ -182,7 +182,7 @@ namespace NinjaStriker
 
         public void Draw()
         {
-            if (isDrawn)
+            if (isVisible)
             {
                 var spriteBatch = EntitySystem.BlackBoard.GetEntry<SpriteBatch>("SpriteBatch");
                 origin = new Vector2(SourceRect.Width / 2,

@@ -18,7 +18,7 @@ namespace NinjaStriker.Systems
     internal class DrawSystem : EntityProcessingSystem
     {
         public DrawSystem()
-            : base(Aspect.All(typeof(Image)))
+            : base(Aspect.All(typeof(Image), typeof(Health)))
         {
         }
         
@@ -26,6 +26,14 @@ namespace NinjaStriker.Systems
         {
             entity.GetComponent<Image>().Position = entity.GetComponent<ScreenPosition>().position;
             entity.GetComponent<Image>().Draw();
+
+            if (entity.HasComponent<Health>())
+            {
+                entity.GetComponent<Health>().healthBar.Draw();
+                entity.GetComponent<Health>().healthBarFilling.Draw();
+            }
+            
+
         }
     }
 }

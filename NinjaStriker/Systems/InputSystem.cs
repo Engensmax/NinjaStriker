@@ -27,46 +27,22 @@ namespace NinjaStriker.Systems
             if (InputManager.Instance.KeyPressed(entity.GetComponent<Input>().
                 actionKeysMap[Input.Action.MoveCharacterRight]))
             {
-                entity.GetComponent<Image>().IsActive = true;
-                entity.GetComponent<Image>().SpriteSheetEffect.CurrentFrame.Y = 0;
                 entity.GetComponent<PlatformPosition>().position = 4;
-                entity.GetComponent<ScreenPosition>().position =
-                ScreenManager.Instance.Dimensions / 2 + 
-                new Vector2(150 - entity.GetComponent<Image>().SourceRect.Width, 
-                            0 - entity.GetComponent<Image>().SourceRect.Height)  ;
             }
             else if (InputManager.Instance.KeyPressed(entity.GetComponent<Input>().
                 actionKeysMap[Input.Action.MoveCharacterLeft]))
             {
-                entity.GetComponent<Image>().IsActive = true;
-                entity.GetComponent<Image>().SpriteSheetEffect.CurrentFrame.Y = 2;
                 entity.GetComponent<PlatformPosition>().position = 2;
-                entity.GetComponent<ScreenPosition>().position =
-                ScreenManager.Instance.Dimensions / 2 + 
-                new Vector2(-150 - entity.GetComponent<Image>().SourceRect.Width, 
-                            0 - entity.GetComponent<Image>().SourceRect.Height);
             }
             else if (InputManager.Instance.KeyPressed(entity.GetComponent<Input>().
                 actionKeysMap[Input.Action.MoveCharacterUp]))
             {
-                entity.GetComponent<Image>().IsActive = true;
-                entity.GetComponent<Image>().SpriteSheetEffect.CurrentFrame.Y = 1;
                 entity.GetComponent<PlatformPosition>().position = 1;
-                entity.GetComponent<ScreenPosition>().position =
-                ScreenManager.Instance.Dimensions / 2 + 
-                new Vector2(0 - entity.GetComponent<Image>().SourceRect.Width, 
-                            -150 - entity.GetComponent<Image>().SourceRect.Height);
             }
             else if (InputManager.Instance.KeyPressed(entity.GetComponent<Input>().
                 actionKeysMap[Input.Action.MoveCharacterDown]))
             {
-                entity.GetComponent<Image>().IsActive = true;
-                entity.GetComponent<Image>().SpriteSheetEffect.CurrentFrame.Y = 3;
                 entity.GetComponent<PlatformPosition>().position = 3;
-                entity.GetComponent<ScreenPosition>().position =
-                ScreenManager.Instance.Dimensions / 2 + 
-                new Vector2(0 - entity.GetComponent<Image>().SourceRect.Width, 
-                            150 - entity.GetComponent<Image>().SourceRect.Height);
             }
             
         }

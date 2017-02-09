@@ -24,6 +24,7 @@ namespace NinjaStriker
     class GameplayScreen : GameScreen
     {
         private EntityWorld world;
+        private Image background;
 
         private void CreatePlayer(int playerNumber, string xmlPath)
         {
@@ -35,12 +36,29 @@ namespace NinjaStriker
             entity.AddComponent(image);
             entity.GetComponent<Image>().LoadContent();
             entity.GetComponent<Input>().Initialize(playerNumber);
+
+            if (playerNumber == 1)
+            {
+                entity.GetComponent<Health>().healthBar.Position =
+                    new Vector2(0,
+                    ScreenManager.Instance.Dimensions.Y / 2 - entity.GetComponent<Health>().healthBar.SourceRect.Height / 2);
+            }
+            else if (playerNumber == 2)
+            {
+                entity.GetComponent<Health>().healthBar.Position =
+                    new Vector2(ScreenManager.Instance.Dimensions.X - entity.GetComponent<Health>().healthBar.SourceRect.Width,
+                    ScreenManager.Instance.Dimensions.Y / 2 - entity.GetComponent<Health>().healthBar.SourceRect.Height / 2);
+            }
+            entity.GetComponent<Health>().healthBarFilling.Position = entity.GetComponent<Health>().healthBar.Position + new Vector2(5, 5);
+
+
             entity.Refresh();
         }
 
         public GameplayScreen()
         {
-
+            this.background = new XmlManager<Image>().Load("Load/background.xml");
+            
             this.world = new EntityWorld();
 
             this.world.InitializeAll(true);
@@ -55,17 +73,21 @@ namespace NinjaStriker
 
         public override void LoadContent()
         {
+            background.LoadContent();
             base.LoadContent();
         }
 
         public override void UnloadContent()
         {
+            background.UnloadContent();
+            world.UnloadContent();
             base.UnloadContent();
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+            background.Update(gameTime);
             EntitySystem.BlackBoard.SetEntry<GameTime>("GameTime", gameTime);
             world.Update();
             if (InputManager.Instance.KeyPressed(Keys.Escape))
@@ -74,7 +96,7 @@ namespace NinjaStriker
 
         public override void Draw()
         {
-
+            background.Draw();
             base.Draw();
             world.Draw();
         }

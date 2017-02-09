@@ -40,7 +40,7 @@ namespace NinjaStriker
         {
             foreach(MenuItem item in Items)
             {
-                item.image.IsActive = true;
+                item.image.isActive = true;
                 item.image.Alpha = alpha;
                 if (alpha == 0.0f)
                     item.image.FadeEffect.Increase = true;
@@ -129,9 +129,9 @@ namespace NinjaStriker
             {
                 {
                     if (i == itemNumber)
-                        Items[i].image.IsActive = true;
+                        Items[i].image.isActive = true;
                     else
-                        Items[i].image.IsActive = false;
+                        Items[i].image.isActive = false;
 
                     Items[i].image.Update(gameTime);
 

@@ -15,7 +15,7 @@ namespace NinjaStriker.Components
 
         public PlatformPosition()
         {
-            this.position = 0;
+            this.position = 1;
         }
             
     }

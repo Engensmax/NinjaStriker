@@ -37,10 +37,10 @@ namespace NinjaStriker.Components
             if (playerNumber == 2)
             {
                 this.actionKeysMap = new Dictionary<Action, Keys>();
-                this.actionKeysMap.Add(Action.MoveCharacterUp, Keys.Up);
-                this.actionKeysMap.Add(Action.MoveCharacterLeft, Keys.Left);
-                this.actionKeysMap.Add(Action.MoveCharacterDown, Keys.Down);
-                this.actionKeysMap.Add(Action.MoveCharacterRight, Keys.Right);
+                this.actionKeysMap.Add(Action.MoveCharacterUp, Keys.I);
+                this.actionKeysMap.Add(Action.MoveCharacterLeft, Keys.J);
+                this.actionKeysMap.Add(Action.MoveCharacterDown, Keys.K);
+                this.actionKeysMap.Add(Action.MoveCharacterRight, Keys.L);
             }
         }
 
